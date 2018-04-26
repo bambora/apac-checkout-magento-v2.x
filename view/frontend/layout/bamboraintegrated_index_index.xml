@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author    Reign <hello@reign.com.au>
+ * @version   1.0.0
+ * @copyright Copyright (c) 2018 Reign. All rights reserved.
+ * @copyright Copyright (c) 2018 Bambora. All rights reserved.
+ * @license   Proprietary/Closed Source
+ * By viewing, using, or actively developing this application in any way, you are
+ * henceforth bound the license agreement, and all of its changes, set forth by
+ * Reign and Bambora. The license can be found, in its entirety, at this address:
+ * http://www.reign.com.au/magento-licence
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">    
+    <referenceContainer name="content">
+        <block class="Bambora\Apaccheckout\Block\Bamboraintegrated"   name="bamboraintegrated_index_index" template="Bambora_Apaccheckout::bamboraintegrated.phtml"  cacheable="false" />
+    </referenceContainer>
+</page>

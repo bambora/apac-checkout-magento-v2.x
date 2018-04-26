@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author    Reign <hello@reign.com.au>
+ * @version   1.0.1
+ * @copyright Copyright (c) 2018 Reign. All rights reserved.
+ * @copyright Copyright (c) 2018 Bambora. All rights reserved.
+ * @license   Proprietary/Closed Source
+ * By viewing, using, or actively developing this application in any way, you are
+ * henceforth bound the license agreement, and all of its changes, set forth by
+ * Reign and Bambora. The license can be found, in its entirety, at this address:
+ * http://www.reign.com.au/magento-licence
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <bambora_apaccheckout>
+                <active>0</active>
+                <order_status>processing</order_status>
+                <model>Bambora\Apaccheckout\Model\Payment</model>
+                <payment_action>authorize_capture</payment_action>
+                <cctypes>AE,VI,MC,DI,JCB</cctypes>
+                <title>Bambora Checkout</title>
+                <allowspecific>0</allowspecific>
+                <min_order_total>0.50</min_order_total>
+            </bambora_apaccheckout>
+        </payment>
+    </default>
+</config>

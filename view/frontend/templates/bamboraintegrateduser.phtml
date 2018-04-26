@@ -1,0 +1,24 @@
+<?php if($this->getErrormessage() == "") {?>
+
+    <div>Please wait...</div>
+    <script>
+        window.onload = function()
+        {
+            window.top.location.href = '<?php echo $this->getBaseUrl() ?>/checkout/onepage/success/';
+        }
+    </script>;
+    <style>
+        body{background:transparent;}
+        .page-wrapper{display:none;}    
+    </style>
+<?php }else{ ?>
+
+    <script>;
+        window.onload = function(); 
+        {
+            alert("Payment capturing error");
+            parent.removeOverlay();
+        }
+    </script>;
+
+<?php } ?>
