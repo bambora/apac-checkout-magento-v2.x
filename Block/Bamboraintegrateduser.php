@@ -1,7 +1,7 @@
 <?php
 /**
  * @author    Reign <hello@reign.com.au>
- * @version   1.0.0
+ * @version   1.1.0
  * @copyright Copyright (c) 2018 Reign. All rights reserved.
  * @copyright Copyright (c) 2018 Bambora. All rights reserved.
  * @license   Proprietary/Closed Source
@@ -13,24 +13,43 @@
 
 namespace Bambora\Apaccheckout\Block;
 
+use Magento\Framework\View\Element\Template;
+
 class Bamboraintegrateduser extends \Magento\Framework\View\Element\Template
 {
+    /**
+     * @var \Magento\Framework\Registry
+     */
+    protected $_registry;
+
+    /**
+     * Bamboraintegrateduser constructor.
+     * @param Template\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param array $data
+     */
+    public function __construct(
+        Template\Context $context,
+        \Magento\Framework\Registry $registry,
+        array $data = []
+    ) {
+        parent::__construct($context, $data);
+        $this->_registry = $registry;
+    }
+
+    /**
+     * @return mixed|string
+     */
     public function getBaseUrl()
     {
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $registry = $objectManager->get('\Magento\Framework\Registry'); 
-
-        return $registry->registry('base_url');
+        return $this->_registry->registry('base_url');
     }
 
+    /**
+     * @return mixed
+     */
     public function getErrormessage()
     {
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $registry = $objectManager->get('\Magento\Framework\Registry'); 
-
-        return $registry->registry('errormessage');
+        return $this->_registry->registry('errormessage');
     }
-    
-    
-
 }

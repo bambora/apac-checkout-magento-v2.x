@@ -1,7 +1,7 @@
 <?php
 /**
  * @author    Reign <hello@reign.com.au>
- * @version   1.0.0
+ * @version   1.1.0
  * @copyright Copyright (c) 2018 Reign. All rights reserved.
  * @copyright Copyright (c) 2018 Bambora. All rights reserved.
  * @license   Proprietary/Closed Source
@@ -13,37 +13,51 @@
 
 namespace Bambora\Apaccheckout\Block;
 
+use Magento\Framework\View\Element\Template;
+
 class Bamboraintegrated extends \Magento\Framework\View\Element\Template
 {
+    /**
+     * @var \Magento\Framework\Registry
+     */
+    protected $_registry;
 
+    /**
+     * Bamboraintegrated constructor.
+     * @param Template\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param array $data
+     */
+    public function __construct(
+        Template\Context $context,
+        \Magento\Framework\Registry $registry,
+        array $data = []
+    ) {
+        parent::__construct($context, $data);
+        $this->_registry = $registry;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getSessionId()
     {
-        
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $registry = $objectManager->get('\Magento\Framework\Registry'); 
-        
-        
-        return $registry->registry('sessionid');
+        return $this->_registry->registry('sessionid');
     }
 
-    
+    /**
+     * @return mixed
+     */
     public function getSubmitUrl()
     {
-        
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $registry = $objectManager->get('\Magento\Framework\Registry'); 
-        
-        
-        return $registry->registry('submiturl');
+        return $this->_registry->registry('submiturl');
     }
-    
+
+    /**
+     * @return mixed
+     */
     public function getSst()
     {
-        
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $registry = $objectManager->get('\Magento\Framework\Registry'); 
-        
-        
-        return $registry->registry('sst');
+        return $this->_registry->registry('sst');
     }
 }

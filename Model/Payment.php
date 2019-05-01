@@ -1,7 +1,7 @@
 <?php
 /**
  * @author    Reign <hello@reign.com.au>
- * @version   1.0.0
+ * @version   1.1.0
  * @copyright Copyright (c) 2018 Reign. All rights reserved.
  * @copyright Copyright (c) 2018 Bambora. All rights reserved.
  * @license   Proprietary/Closed Source
@@ -26,7 +26,7 @@ class Payment extends \Magento\Payment\Model\Method\Cc
     protected $_canCapturePartial           = true;
     protected $_canRefund                   = true;
     protected $_canRefundInvoicePartial     = true;
-    protected $_canVoid                     = true;
+    protected $_canVoid                     = false;
     protected $_canDelete                   = true;
             
     protected $_connectionType;
@@ -126,9 +126,9 @@ class Payment extends \Magento\Payment\Model\Method\Cc
     {        
         
         if ($this->getConfigData('mode') == "sandbox"){
-            $url = \Reign\Bambora\Model\Constant::SANDBOX_ENDPOINT;;
+            $url = \Bambora\Apacapi\Model\Constant::SANDBOX_ENDPOINT;
         } else {
-            $url = \Reign\Bambora\Model\Constant::LIVE_ENDPOINT;
+            $url = \Bambora\Apacapi\Model\Constant::LIVE_ENDPOINT;
         }
                 
         $soaprequest  = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dts="http://www.ippayments.com.au/interface/api/dts">';
@@ -147,6 +147,7 @@ class Payment extends \Magento\Payment\Model\Method\Cc
         );
 
         
+     
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

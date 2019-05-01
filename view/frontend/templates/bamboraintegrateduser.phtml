@@ -1,24 +1,36 @@
-<?php if($this->getErrormessage() == "") {?>
-
-    <div>Please wait...</div>
-    <script>
-        window.onload = function()
-        {
-            window.top.location.href = '<?php echo $this->getBaseUrl() ?>/checkout/onepage/success/';
-        }
-    </script>;
+<?php if ($this->getErrormessage() == ""): ?>
+    <div><?= __('Please wait...') ?></div>
+        <script>
+            window.onload = function () {
+                window.top.location.href = '<?php echo $this->getBaseUrl() ?>/checkout/onepage/success/';
+            }
+        </script>
     <style>
-        body{background:transparent;}
-        .page-wrapper{display:none;}    
-    </style>
-<?php }else{ ?>
-
-    <script>;
-        window.onload = function(); 
-        {
-            alert("Payment capturing error");
-            parent.removeOverlay();
+        body {
+            background: transparent;
         }
-    </script>;
 
-<?php } ?>
+        .page-wrapper {
+            display: none;
+        }
+    </style>
+<?php else: ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+            
+            jQuery(".billing-address-same-as-shipping-block .messages",parent.document).remove();
+            
+            var html = '';
+            html = '<div data-role="checkout-messages" class="messages">';
+            html += '    <div role="alert" class="message message-error error">';
+            html += '        <div data-ui-id="checkout-cart-validationmessages-message-error"><?= __("Payment failed: %1", $this->getErrormessage()) ?></div>';
+            html += '    </div>';
+            html += '</div>';
+
+            jQuery(".billing-address-same-as-shipping-block",parent.document).prepend(html);
+            parent.removeOverlay();
+ 
+        }        
+    </script>
+<?php endif; ?>
