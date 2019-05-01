@@ -1,10 +1,4 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd" layout="1column">
-    <!--
-    <head>
-        <css src="Reign_Planbuilder::css/planbuilder.css" />
-        <script src="Reign_Planbuilder::js/planbuilder.js"/>
-    </head>
-    --> 
     <body>
         <referenceContainer name="content">
             <block class="Bambora\Apaccheckout\Block\Bamboraintegrated" name="bamboraintegrated" template="bamboraintegrated.phtml" />
